@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sld>
+  <accelerator name="mmult" desc="Accelerator MMULT" data_size="4" device_id="04a" hls_tool="vivado_hls">
+    <param name="SHIFT" desc="SHIFT" />
+    <param name="N" desc="N" />
+  </accelerator>
+</sld>

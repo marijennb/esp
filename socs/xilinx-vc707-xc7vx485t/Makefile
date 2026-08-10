@@ -26,7 +26,9 @@ SIMTOP = testbench
 
 # Compile flags
 VCOMOPT +=
-VLOGOPT +=
+VLOGOPT += +incdir+$(ESP_ROOT)/rtl/caches/esp-caches/common/defs
+VLOGOPT += +incdir+$(DESIGN_PATH)/socgen/esp
+VLOGOPT += +incdir+$(ESP_ROOT)/rtl/cores/ibex/ibex/vendor/lowrisc_ip/ip/prim/rtl
 
 XCOMOPT +=
 XLOGOPT +=

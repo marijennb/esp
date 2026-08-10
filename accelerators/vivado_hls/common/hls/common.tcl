@@ -42,7 +42,8 @@ foreach dma $dma_width {
 	if {[lsearch $fpga_techs $TECH] >= 0} {
 	    if {$TECH eq "virtex7"} {
 		#xilinx-vc707
-		set_part "xc7vx485tffg1761-2"
+		# set_part "xc7vx485tffg1761-2"
+		set_part "xc7k160tffg676-2"
 		#profpga-xc7v2000t
 		#set_part "xc7v2000tflg1925-2"
 	    }
@@ -68,7 +69,7 @@ foreach dma $dma_width {
 	}
 	config_compile -no_signed_zeros=0 -unsafe_math_optimizations=0
 	config_schedule -effort medium -relax_ii_for_timing=0 -verbose=0
-	config_bind -effort medium
+	# config_bind -effort medium
 	config_sdx -optimization_level none -target none
 	set_clock_uncertainty 12.5%
 

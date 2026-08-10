@@ -124,7 +124,7 @@ include $(ESP_ROOT)/utils/make/zynq.mk
 
 
 ### Modelsim targets ###
-include $(ESP_ROOT)/utils/make/modelsim.mk
+# include $(ESP_ROOT)/utils/make/modelsim.mk
 
 ### Modelsim targets ###
 include $(ESP_ROOT)/utils/make/questa.mk

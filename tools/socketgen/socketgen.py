@@ -2819,6 +2819,7 @@ for acc in accelerators:
     acc_dir = acc_rtl_dir + "/" + acc
     acc_dp = get_immediate_subdirectories(acc_dir)
     for dp_str in acc_dp:
+        # @TODO: Add validation for implementation names
         dp = dp_str.replace(acc + "_", "")
         dp_info = dp.split("_")
         skip = False

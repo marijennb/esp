@@ -7,8 +7,8 @@ HLS_TCL=common.tcl
 
 all: hls
 
-hls: 
-	@vivado_hls -f $(HLS_TCL)
+hls:
+	@vitis_hls -f $(HLS_TCL)
 
 install:
 	@mkdir -p $(RTL_OUT)
@@ -61,4 +61,3 @@ distclean: clean
 	@rm -rf $(RTL_OUT)
 
 .PHONY: install clean distclean
-

@@ -6,8 +6,11 @@
 #include "hls_math.h"
 #include <cstring>
 
-void load(word_t _inbuff[SIZE_IN_CHUNK_DATA], dma_word_t *in1, unsigned chunk,
-	  dma_info_t &load_ctrl, int base_index)
+void load(word_t _inbuff[SIZE_IN_CHUNK_DATA],
+            dma_word_t *in1,
+            unsigned chunk,
+            dma_info_t &load_ctrl,
+            int base_index)
 {
 load_data:
 
@@ -19,14 +22,19 @@ load_data:
     load_ctrl.user = 0;
 
     for (unsigned i = 0; i < SIZE_IN_CHUNK; i++) {
-    	load_label0:for(unsigned j = 0; j < VALUES_PER_WORD; j++) {
-	    _inbuff[i * VALUES_PER_WORD + j] = in1[base + i].word[j];
-    	}
+load_label0:
+        dma_word_t temp = in1[base + i];
+        for(unsigned j = 0; j < VALUES_PER_WORD; j++) {
+	        _inbuff[i * VALUES_PER_WORD + j] = temp.word[j];
+        }
     }
 }
 
-void store(word_t _outbuff[SIZE_OUT_CHUNK_DATA], dma_word_t *out, unsigned chunk,
-	   dma_info_t &store_ctrl, int base_index)
+void store(word_t _outbuff[SIZE_OUT_CHUNK_DATA],
+            dma_word_t *out,
+            unsigned chunk,
+            dma_info_t &store_ctrl, int
+            base_index)
 {
 store_data:
 
@@ -38,9 +46,12 @@ store_data:
     store_ctrl.user = 0;
 
     for (unsigned i = 0; i < SIZE_OUT_CHUNK; i++) {
-	store_label1:for(unsigned j = 0; j < VALUES_PER_WORD; j++) {
-	    out[base + i].word[j] = _outbuff[i * VALUES_PER_WORD + j];
-	}
+store_label1:
+        dma_word_t temp;
+        for(unsigned j = 0; j < VALUES_PER_WORD; j++) {
+            temp.word[j] = _outbuff[i * VALUES_PER_WORD + j];
+        }
+        out[base + i] = temp;
     }
 }
 
@@ -51,8 +62,11 @@ void compute(word_t _inbuff[SIZE_IN_CHUNK_DATA], word_t _outbuff[SIZE_OUT_CHUNK_
         _outbuff[i] = _inbuff[i*2] + _inbuff[i*2+1];
 }
 
-void top(dma_word_t *out, dma_word_t *in1, const unsigned conf_info_nbursts,
-	 dma_info_t &load_ctrl, dma_info_t &store_ctrl)
+void top(dma_word_t *out,
+        dma_word_t *in1,
+        const unsigned conf_info_nbursts,
+        dma_info_t &load_ctrl,
+        dma_info_t &store_ctrl)
 {
 
 go:
