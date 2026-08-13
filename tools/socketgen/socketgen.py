@@ -645,20 +645,20 @@ def write_acc_interface(
             f.write("      out_word_full_n          : in  std_logic;\n")
             f.write("      out_word_write           : out std_logic;\n")
         else:
-            f.write("      out_word_V_din             : out std_logic_vector (" +
+            f.write("      out_r_din             : out std_logic_vector (" +
                     str(noc_width - 1) + " downto 0);\n")
-            f.write("      out_word_V_full_n          : in  std_logic;\n")
-            f.write("      out_word_V_write           : out std_logic;\n")
+            f.write("      out_r_full_n          : in  std_logic;\n")
+            f.write("      out_r_write           : out std_logic;\n")
         if datatype == 'float' or datatype == 'float_in':
             f.write("      in1_word_dout            : in  std_logic_vector (" +
                     str(noc_width - 1) + " downto 0);\n")
             f.write("      in1_word_empty_n         : in  std_logic;\n")
             f.write("      in1_word_read            : out std_logic;\n")
         else:
-            f.write("      in1_word_V_dout            : in  std_logic_vector (" +
+            f.write("      in1_dout            : in  std_logic_vector (" +
                     str(noc_width - 1) + " downto 0);\n")
-            f.write("      in1_word_V_empty_n         : in  std_logic;\n")
-            f.write("      in1_word_V_read            : out std_logic;\n")
+            f.write("      in1_empty_n         : in  std_logic;\n")
+            f.write("      in1_read            : out std_logic;\n")
         f.write(
             "      load_ctrl                  : out std_logic_vector (" +
             str(127) +
@@ -808,12 +808,12 @@ def write_acc_port_map(
             f.write("      out_word_full_n          => dma_write_chnl_ready,\n")
             f.write("      out_word_din             => dma_write_chnl_data,\n")
         else:
-            f.write("      in1_word_V_empty_n         => dma_read_chnl_valid,\n")
-            f.write("      in1_word_V_read            => dma_read_chnl_ready,\n")
-            f.write("      in1_word_V_dout            => dma_read_chnl_data,\n")
-            f.write("      out_word_V_write           => dma_write_chnl_valid,\n")
-            f.write("      out_word_V_full_n          => dma_write_chnl_ready,\n")
-            f.write("      out_word_V_din             => dma_write_chnl_data,\n")
+            f.write("      in1_empty_n         => dma_read_chnl_valid,\n")
+            f.write("      in1_read            => dma_read_chnl_ready,\n")
+            f.write("      in1_dout            => dma_read_chnl_data,\n")
+            f.write("      out_r_write           => dma_write_chnl_valid,\n")
+            f.write("      out_r_full_n          => dma_write_chnl_ready,\n")
+            f.write("      out_r_din             => dma_write_chnl_data,\n")
         f.write("      ap_done                    => ap_done,\n")
         f.write("      ap_idle                    => ap_idle,\n")
         f.write("      ap_ready                   => ap_ready\n")
